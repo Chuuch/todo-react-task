@@ -1,54 +1,67 @@
-# React + TypeScript + Vite
+---
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Todo App
 
-Currently, two official plugins are available:
+A simple and elegant Todo app built with modern technologies like React, TypeScript, Vite, TailwindCSS, and Redux Toolkit. This app provides a clean user interface, theme toggling with dark mode support, and task management functionality with persistent data using localStorage.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Task Management**: Add, edit, and delete tasks with ease.
+- **Persistent Storage**: Tasks are stored locally in the browser using `localStorage`, ensuring data persistence even after page reloads.
+- **Dark Mode**: Seamless dark mode toggle implemented through Redux and localStorage.
+- **Responsive Design**: Fully responsive layout that works on all devices.
+- **Optimized Performance**: Built with Vite for fast bundling and hot module reloading.
+  
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: A strongly-typed programming language that builds on JavaScript, providing static type checking.
+- **Vite**: A next-generation, fast build tool optimized for modern web development.
+- **TailwindCSS**: A utility-first CSS framework for building custom designs without having to leave your HTML.
+- **Redux Toolkit**: A powerful toolset for managing state in JavaScript applications with Redux.
+- **localStorage**: Used for storing tasks and theme preference (dark mode) persistently in the browser.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Installation
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. **Clone the repository:**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+   ```bash
+   git clone https://github.com/Chuuch/todo-react-task
+   ```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+2. **Navigate to the project directory:**
+
+   ```bash
+   cd todo-app
+   ```
+
+3. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+4. **Start the development server:**
+
+   ```bash
+   npm run dev
+   ```
+
+   The app will be available at `http://localhost:5173`.
+
+## Dark Mode Feature
+
+The app supports **Dark Mode**. You can toggle between light and dark themes by clicking the sun/moon icon at the top-right of the app. The theme preference is stored in `localStorage` so that it persists even after you close and reopen the browser.
+
+### How it Works:
+- The dark mode state is managed using **Redux Toolkit**.
+- The theme is stored in `localStorage` for persistence across page reloads.
+- TailwindCSS is used for styling with the `dark` class, which changes the appearance of the app when dark mode is enabled.
+
+## Deployment
+
+The app is deployed on **Vercel** for easy access and hosting.
+
+You can access the live demo here:
+
+[**Live Demo**]([https://your-vercel-deployment-link.com](https://todo-react-task-4oitqdmxx-chuchulev.vercel.app/))
