@@ -4,6 +4,7 @@ import { toggleTask, removeTask } from "../redux/taskSlice";
 import { FaTrash } from "react-icons/fa6";
 import { FaCheck } from "react-icons/fa";
 import { FaUndo } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const TaskList = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,11 @@ const TaskList = () => {
     if (filter === "pending") return !task.completed;
     return true;
   });
+
+  const handleRemoveTask = (taskId: string, taskName: string) => {
+    dispatch(removeTask(taskId));
+    toast.success(`Task "${taskName}" removed successfully`);
+  };
 
   return (
     <ul>
@@ -36,7 +42,7 @@ const TaskList = () => {
               {task.completed ? <FaUndo /> : <FaCheck />}
             </button>
             <button
-              onClick={() => dispatch(removeTask(task.id))}
+              onClick={() => handleRemoveTask(task.id, task.name)}
               className="text-gray-500 hover:text-red-400/90 dark:text-gray-200 dark:hover:text-red-700/90 cursor-pointer rounded-sm border p-2
               "
             >

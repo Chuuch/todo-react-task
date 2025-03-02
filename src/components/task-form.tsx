@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask } from "../redux/taskSlice";
+import toast from "react-hot-toast";
 
 const TaskForm = () => {
   const dispatch = useDispatch();
@@ -10,6 +11,7 @@ const TaskForm = () => {
   const handleAddTask = () => {
     if (taskName.trim() === "") return;
     dispatch(addTask({ name: taskName, description: taskDescription }));
+    toast.success("Task added successfully!");
     setTaskName("");
     setTaskDescription("");
   };
