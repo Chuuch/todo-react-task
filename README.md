@@ -63,4 +63,4 @@ The app is deployed on **Vercel** for easy access and hosting.
 
 You can access the live demo here:
 
-[**Live Demo**](https://todo-react-task-4oitqdmxx-chuchulev.vercel.app/)
+[**Live Demo**](https://todo-chuchulev.vercel.app/)
