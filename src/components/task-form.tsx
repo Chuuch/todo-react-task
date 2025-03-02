@@ -1,15 +1,23 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../redux/hooks/hooks";
 import { addTask } from "../redux/taskSlice";
 import toast from "react-hot-toast";
+import Button from "./button";
 
 const TaskForm = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [taskName, setTaskName] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
 
   const handleAddTask = () => {
-    if (taskName.trim() === "") return;
+    if (taskName.trim() === "") {
+      toast.error("Task name cannot be empty!");
+      return;
+    }
+    if (taskDescription.trim() === "") {
+      toast.error("Task description cannot be empty!");
+      return;
+    }
     dispatch(addTask({ name: taskName, description: taskDescription }));
     toast.success("Task added successfully!");
     setTaskName("");
@@ -32,12 +40,12 @@ const TaskForm = () => {
         value={taskDescription}
         onChange={(e) => setTaskDescription(e.target.value)}
       />
-      <button
+      <Button
         className="bg-blue-500 hover:bg-blue-500/90 dark:bg-orange-500 rounded-2xl dark:hover:bg-orange-400/90 cursor-pointer text-white px-4 py-2 w-full"
         onClick={handleAddTask}
       >
         Add Task
-      </button>
+      </Button>
     </div>
   );
 };

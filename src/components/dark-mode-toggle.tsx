@@ -1,29 +1,17 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleDarkMode, selectDarkMode } from "../redux/themeSlice";
 import { FaMoon, FaSun } from "react-icons/fa";
+import useDarkMode from "../redux/hooks/useDarkMode";
+import Button from "./button";
 
 const DarkModeToggle = () => {
-  const dispatch = useDispatch();
-  const darkMode = useSelector(selectDarkMode);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
+  const { darkMode, toggleTheme } = useDarkMode();
 
   return (
-    <button
-      onClick={() => {
-        dispatch(toggleDarkMode());
-      }}
+    <Button
+      onClick={toggleTheme}
       className="p-2 bg-gray-200 dark:bg-gray-600 rounded cursor-pointer"
     >
       {darkMode ? <FaSun className="dark:text-gray-200" /> : <FaMoon />}
-    </button>
+    </Button>
   );
 };
 
